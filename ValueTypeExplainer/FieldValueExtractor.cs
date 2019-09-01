@@ -11,13 +11,11 @@ namespace ValueTypeExplainer
         private T aValue;
 
         /// <summary>
-        /// Dient zum auslesen der Felder des ValueType
-        /// (Beispiel double.MinValue, double.MaxValue)
-        /// Exception: generischer Type "T" != ValueType.
+        /// Gibt den Wert einer Konstanten (z.B. MaxValue) des Typs (T) zurück
         /// </summary>
-        /// <typeparam name="T">muss ValueType sein</typeparam>
-        /// <param name="fieldName">als Beispiel "MinValue", "MaxValue"</param>
-        /// <returns></returns>
+        /// <remarks>Diese Methode funktioniert nur für Werttypen!</remarks>
+        /// <param name="fieldName">Name der Konstanten deren Wert ermittelt werden soll.</param>
+        /// <exception cref="Exception">Wenn T kein Werttyp ist, fieldName nicht bekannt ist, oder der Rückgabewert nicht in T konvertiert werden kann.</exception>
         public T GetFieldInfoForValueType(string fieldName)
         {
             T result;
