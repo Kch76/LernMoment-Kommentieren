@@ -10,6 +10,17 @@ namespace ValueTypeExplainer
     {
         static void Main(string[] args)
         {
+            short hugo = 5;
+            ushort positiverHugo = 2;
+
+            Console.WriteLine($"int16.MaxValue = {GetFieldInfoForValueType(hugo, "MaxValue")}");
+            Console.WriteLine($"uint16.MaxValue = {GetFieldInfoForValueType(positiverHugo, "MaxValue")}");
+            Console.WriteLine($"int.MaxValue = {GetFieldInfoForValueType(500, "MaxValue")}");
+            Console.WriteLine($"double.MaxValue = {GetFieldInfoForValueType(5.2d, "MaxValue")}");
+
+            Console.WriteLine();
+            Console.WriteLine("Anwendung mit 'Enter' beenden!");
+            Console.ReadLine();
         }
 
         /// <summary>
@@ -21,7 +32,7 @@ namespace ValueTypeExplainer
         /// <param name="number">muss ValueType sein</param>
         /// <param name="fieldName">als Beispiel "MinValue", "MaxValue"</param>
         /// <returns></returns>
-        public T GetFieldInfoForValueType<T>(T number, string fieldName)
+        public static T GetFieldInfoForValueType<T>(T number, string fieldName)
         {
             T result;
             object tmpResult;
