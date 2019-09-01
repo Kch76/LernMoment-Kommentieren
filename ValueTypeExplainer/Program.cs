@@ -10,59 +10,19 @@ namespace ValueTypeExplainer
     {
         static void Main(string[] args)
         {
-            short hugo = 5;
-            ushort positiverHugo = 2;
+            FieldValueExtractor<short> shortExtractor = new FieldValueExtractor<short>();
+            FieldValueExtractor<ushort> positiveShortExtractor = new FieldValueExtractor<ushort>();
+            FieldValueExtractor<int> intExtractor = new FieldValueExtractor<int>();
+            FieldValueExtractor<double> doubleExtractor = new FieldValueExtractor<double>();
 
-            Console.WriteLine($"int16.MaxValue = {GetFieldInfoForValueType(hugo, "MaxValue")}");
-            Console.WriteLine($"uint16.MaxValue = {GetFieldInfoForValueType(positiverHugo, "MaxValue")}");
-            Console.WriteLine($"int.MaxValue = {GetFieldInfoForValueType(500, "MaxValue")}");
-            Console.WriteLine($"double.MaxValue = {GetFieldInfoForValueType(5.2d, "MaxValue")}");
+            Console.WriteLine($"int16.MaxValue = {shortExtractor.GetFieldInfoForValueType("MaxValue")}");
+            Console.WriteLine($"uint16.MaxValue = {positiveShortExtractor.GetFieldInfoForValueType("MaxValue")}");
+            Console.WriteLine($"int.MaxValue = {intExtractor.GetFieldInfoForValueType("MaxValue")}");
+            Console.WriteLine($"double.MaxValue = {doubleExtractor.GetFieldInfoForValueType("MaxValue")}");
 
             Console.WriteLine();
             Console.WriteLine("Anwendung mit 'Enter' beenden!");
             Console.ReadLine();
-        }
-
-        /// <summary>
-        /// Dient zum auslesen der Felder des ValueType
-        /// (Beispiel double.MinValue, double.MaxValue)
-        /// Exception: generischer Type "T" != ValueType.
-        /// </summary>
-        /// <typeparam name="T">muss ValueType sein</typeparam>
-        /// <param name="number">muss ValueType sein</param>
-        /// <param name="fieldName">als Beispiel "MinValue", "MaxValue"</param>
-        /// <returns></returns>
-        public static T GetFieldInfoForValueType<T>(T number, string fieldName)
-        {
-            T result;
-            object tmpResult;
-
-            if (number.GetType().IsValueType)
-            {
-                if (fieldName?.Length > 0 && number.GetType().GetFields().Where(f => f.Name == fieldName).FirstOrDefault() != null)
-                {
-                    tmpResult = number.GetType().GetField(fieldName).GetValue(number.GetType().GetField(fieldName));
-
-                    if (tmpResult.GetType() == typeof(T))
-                    {
-                        result = (T)tmpResult;
-                    }
-                    else
-                    {
-                        throw new Exception(string.Format("Typ = {0} passt nicht zum Rückgabewert des geforderten Feldes {1} vom Typ {2}.", typeof(T), fieldName, tmpResult.GetType()));
-                    }
-                }
-                else
-                {
-                    throw new Exception(string.Format("Kann fieldName {0} in Typ {1} nicht finden.", fieldName, typeof(T)));
-                }
-            }
-            else
-            {
-                throw new Exception(string.Format("Typ = {0} ist kein WertType.", typeof(T)));
-            }
-
-            return result;
         }
     }
 }
