@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ValueTypeExplainer
 {
+    /// <summary>
+    /// Ermöglicht das Auslesen der Werte einiger Konstanten von Werttypen.
+    /// </summary>
     class FieldValueExtractor<T>
     {
         // Wird benötigt um den Datentyp von T zur Laufzeit zubestimmen!
