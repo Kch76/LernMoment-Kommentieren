@@ -14,9 +14,6 @@ namespace ValueTypeExplainer
         /// Gibt den Wert einer Konstanten (z.B. MaxValue) des Werttyp (T) zurück
         /// </summary>
         /// <param name="fieldName">Name der Konstanten deren Wert ermittelt werden soll.</param>
-        /// <exception cref="InvalidOperationException">Wenn T kein Werttyp ist</exception>
-        /// <exception cref="ArgumentOutOfRangeException">Wenn fieldName nicht bekannt ist</exception>
-        /// <exception cref="Exception">Wenn der Rückgabewert nicht in T konvertiert werden kann.</exception>
         public T GetFieldInfoForValueType(string fieldName)
         {
             T result;
