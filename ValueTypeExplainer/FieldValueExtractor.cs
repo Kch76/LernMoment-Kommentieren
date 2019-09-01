@@ -60,7 +60,8 @@ namespace ValueTypeExplainer
         {
             FieldInfo fieldOfaValue = aValue.GetType().GetField(fieldName);
 
-            return fieldOfaValue.GetValue(fieldOfaValue);
+            // Da fieldName eine Konstante ist (die static ist), können wir hier null übergeben
+            return fieldOfaValue.GetValue(null);
         }
 
         private bool IsValidFieldNameForThisDataType(string fieldName)
