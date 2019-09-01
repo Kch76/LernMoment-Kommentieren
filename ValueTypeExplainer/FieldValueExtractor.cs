@@ -8,7 +8,8 @@ namespace ValueTypeExplainer
 {
     class FieldValueExtractor<T>
     {
-        private T aValue;
+        // Wird benötigt um den Datentyp von T zur Laufzeit zubestimmen!
+        private readonly T aValue;
 
         /// <summary>
         /// Gibt den Wert einer Konstanten (z.B. MaxValue) des Werttyp (T) zurück
