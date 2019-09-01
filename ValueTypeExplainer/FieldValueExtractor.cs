@@ -16,7 +16,6 @@ namespace ValueTypeExplainer
         /// Exception: generischer Type "T" != ValueType.
         /// </summary>
         /// <typeparam name="T">muss ValueType sein</typeparam>
-        /// <param name="number">muss ValueType sein</param>
         /// <param name="fieldName">als Beispiel "MinValue", "MaxValue"</param>
         /// <returns></returns>
         public T GetFieldInfoForValueType(string fieldName)
