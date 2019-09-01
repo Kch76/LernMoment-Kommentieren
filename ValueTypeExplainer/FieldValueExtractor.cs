@@ -13,7 +13,6 @@ namespace ValueTypeExplainer
         /// <summary>
         /// Gibt den Wert einer Konstanten (z.B. MaxValue) des Werttyp (T) zurück
         /// </summary>
-        /// <param name="fieldName">Name der Konstanten deren Wert ermittelt werden soll.</param>
         public T GetFieldInfoForValueType(string fieldName)
         {
             T result;
