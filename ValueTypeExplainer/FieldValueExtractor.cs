@@ -23,12 +23,16 @@ namespace ValueTypeExplainer
             T result;
             object tmpResult;
 
+            // Überprüfen ob der Datentyp (T) dieser Instanz tatsächlich ein ValueType ist.
             if (aValue.GetType().IsValueType)
             {
+                // Überprüfen ob fieldName für diesen Datentyp gültig ist bzw. definiert ist
                 if (fieldName?.Length > 0 && aValue.GetType().GetFields().Where(f => f.Name == fieldName).FirstOrDefault() != null)
                 {
+                    // Den Wert für fieldName "beschaffen"
                     tmpResult = aValue.GetType().GetField(fieldName).GetValue(aValue.GetType().GetField(fieldName));
 
+                    // Können wir den Wert aus dieser Methode zurück geben?
                     if (tmpResult.GetType() == typeof(T))
                     {
                         result = (T)tmpResult;
