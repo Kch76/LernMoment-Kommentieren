@@ -15,7 +15,9 @@ namespace ValueTypeExplainer
         /// </summary>
         /// <remarks>Diese Methode funktioniert nur für Werttypen!</remarks>
         /// <param name="fieldName">Name der Konstanten deren Wert ermittelt werden soll.</param>
-        /// <exception cref="Exception">Wenn T kein Werttyp ist, fieldName nicht bekannt ist, oder der Rückgabewert nicht in T konvertiert werden kann.</exception>
+        /// <exception cref="InvalidOperationException">Wenn T kein Werttyp ist</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Wenn fieldName nicht bekannt ist</exception>
+        /// <exception cref="Exception">Wenn der Rückgabewert nicht in T konvertiert werden kann.</exception>
         public T GetFieldInfoForValueType(string fieldName)
         {
             T result;
@@ -28,12 +30,12 @@ namespace ValueTypeExplainer
                 }
                 else
                 {
-                    throw new Exception(string.Format("Kann fieldName {0} in Typ {1} nicht finden.", fieldName, typeof(T)));
+                    throw new ArgumentOutOfRangeException(string.Format("Kann fieldName {0} in Typ {1} nicht finden.", fieldName, typeof(T)));
                 }
             }
             else
             {
-                throw new Exception(string.Format("Typ = {0} ist kein WertType.", typeof(T)));
+                throw new InvalidOperationException(string.Format("Typ = {0} ist kein WertType.", typeof(T)));
             }
 
             return result;
