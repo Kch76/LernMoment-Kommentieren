@@ -11,9 +11,8 @@ namespace ValueTypeExplainer
         private T aValue;
 
         /// <summary>
-        /// Gibt den Wert einer Konstanten (z.B. MaxValue) des Typs (T) zurück
+        /// Gibt den Wert einer Konstanten (z.B. MaxValue) des Werttyp (T) zurück
         /// </summary>
-        /// <remarks>Diese Methode funktioniert nur für Werttypen!</remarks>
         /// <param name="fieldName">Name der Konstanten deren Wert ermittelt werden soll.</param>
         /// <exception cref="InvalidOperationException">Wenn T kein Werttyp ist</exception>
         /// <exception cref="ArgumentOutOfRangeException">Wenn fieldName nicht bekannt ist</exception>
