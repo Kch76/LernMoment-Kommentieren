@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -57,7 +58,9 @@ namespace ValueTypeExplainer
 
         private object GetValue(string fieldName)
         {
-            return aValue.GetType().GetField(fieldName).GetValue(aValue.GetType().GetField(fieldName));
+            FieldInfo fieldOfaValue = aValue.GetType().GetField(fieldName);
+
+            return fieldOfaValue.GetValue(fieldOfaValue);
         }
 
         private bool IsValidFieldNameForThisDataType(string fieldName)
