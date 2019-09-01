@@ -66,7 +66,13 @@ namespace ValueTypeExplainer
 
         private bool IsValidFieldNameForThisDataType(string fieldName)
         {
-            return fieldName?.Length > 0 && aValue.GetType().GetFields().Where(f => f.Name == fieldName).FirstOrDefault() != null;
+            // FieldInfo.GetField schmeißt eine Exception, wenn fieldName null ist!
+            if (fieldName == null)
+            {
+                return false;
+            }
+
+            return aValue.GetType().GetField(fieldName) != null;
         }
 
         private bool IsValueType()
